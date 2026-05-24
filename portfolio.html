@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelrahman Tayel | Engineering Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #cbd5e1;
+            --text-heading: #f8fafc;
+            --accent-color: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --border-color: #334155;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --text-heading: #0f172a;
+            --accent-color: #0284c7;
+            --accent-hover: #0369a1;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--text-heading);
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 1.5rem;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: 0 auto 2rem;
+            font-size: 1.05rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            transition: transform 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category h3 {
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-badge {
+            background-color: var(--bg-color);
+            color: var(--accent-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Unified Timeline Setup */
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-2.5rem + 2px);
+            top: 28px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 0 4px var(--bg-color);
+            z-index: 2;
+        }
+
+        .timeline-item.hidden {
+            display: none;
+        }
+
+        .job-title, .project-title {
+            color: var(--text-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta, .project-date {
+            font-size: 0.95rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .timeline-item ul {
+            margin-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.6rem;
+        }
+
+        /* Filter Controls */
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--accent-color);
+            color: #0f172a;
+            border-color: var(--accent-color);
+        }
+
+        .project-tech {
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--accent-color);
+            opacity: 0.95;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--text-heading);
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 1.25rem;
+        }
+
+        .project-link:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: block;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            width: 28px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .contact-item span {
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem; }
+            nav a { margin-left: 0.8rem; font-size: 0.9rem; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">AT.ENG</div>
+        <nav>
+            <a href="#about" class="active">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Project Timeline</a>
+            <a href="#contact">Contact</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="hero">
+            <h1>Abdelrahman Tayel</h1>
+            <div class="subtitle">Automation & Robotics Student | Embedded & Industrial Automation Engineer</div>
+            <p>Automation and Robotics student at Poznań University of Technology with a proven record of designing, programming, and validating hardware loops, real-time embedded firmware, and industrial tracking frameworks[cite: 8, 9, 10]. Expertise encompasses industrial sensor processing pipelines, continuous feedback adjustments, and signal threshold calibrations[cite: 28, 50, 53]. Fully authorized and mobile for relocation options across Poland and Europe[cite: 11].</p>
+            <div class="social-links">
+                <a href="https://github.com/abdosalama11" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/Abdelrahman-Tayel" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:abdo.tayel103@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+48577175940" aria-label="Phone"><i class="fas fa-phone"></i></a>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2><i class="fas fa-tools"></i> Core Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge">C/C++ (OOP/OOD)</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Siemens SCL (Structured Text)</span>
+                        <span class="skill-badge">Ladder Logic (LAD)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Industrial I/O & Sensors</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge">Inductive & Optical Proximity Nets</span>
+                        <span class="skill-badge">Ultrasonic Transmitters</span>
+                        <span class="skill-badge">ADC (10-bit) / DAC (12-bit) Scaling</span>
+                        <span class="skill-badge">Signal Debounce & Filtering</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Automation Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge">Siemens TIA Portal v17/v18</span>
+                        <span class="skill-badge">Simatic S7-1200 / S7-1500 Controllers</span>
+                        <span class="skill-badge">SIMMATIC HMI Panel Frameworks</span>
+                        <span class="skill-badge">Profinet Network Architecture</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge">Arabic (Native)</span>
+                        <span class="skill-badge">English (Fluent)</span>
+                        <span class="skill-badge">Polish (Basic)</span>
+                        <span class="skill-badge">German (Basic)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2><i class="fas fa-briefcase"></i> Industrial Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="job-title">Automation and Robotics Intern</div>
+                    <div class="job-meta">Poznań University of Technology | 06/2025 - 08/2025 [cite: 25, 26, 27]</div>
+                    <ul>
+                        <li>Operated DSP-based motor control hardware using DSP++ compiler for PMSM motor control under real-time conditions[cite: 28].</li>
+                        <li>Conducted systematic fault injection testing and Hardware-in-the-Loop (HIL) simulation across inverter switching circuit combinations to validate system safety boundaries[cite: 29].</li>
+                        <li>Controlled and validated BLDC motor operation via STM32 Nucleo boards using low-level peripherals, managing GPIO, Timers, and ADC tracking configurations[cite: 30].</li>
+                        <li>Developed automated Python and MATLAB scripts to parse, extract, and accelerate experimental hardware data validation loops[cite: 31].</li>
+                        <li>Validated and compared system measurements, identifying software signal anomalies and logging version records via Git[cite: 32, 33].</li>
+                    </ul>
+                    <div class="project-tech">Technologies: MATLAB, Python, STM32/STM32CubeIDE, DSP Hardware, DSP++ Compiler, HIL Testing, SWD Debugging, Git [cite: 34]</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2><i class="fas fa-project-diagram"></i> Project Roadmap Timeline</h2>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Ecosystems</button>
+                <button class="filter-btn" data-filter="plc">Industrial Automation / PLC</button>
+                <button class="filter-btn" data-filter="robotics">Robotics & ROS2</button>
+                <button class="filter-btn" data-filter="cv">AI & Vision</button>
+                <button class="filter-btn" data-filter="embedded">Embedded & C++</button>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item project-card" data-category="plc">
+                    <div class="project-date">[05/2026 - Current]</div>
+                    <h3 class="project-title">Simatic S7-1200 Industrial Automation & Physical Station Frameworks</h3>
+                    <ul>
+                        <li><strong>Physical Sorting Belt Module:</strong> Engineered and deployed an industrial material sorting layout managed via TIA Portal. Integrated physical hardware nets comprising inductive and optical sensors to classify materials in real time based on structural properties, ensuring 100% stable routing metrics.</li>
+                        <li><strong>Continuous Water Level Pump Controller:</strong> Programmed a closed-loop automated tracking infrastructure using ultrasonic sensors and level transmitters, implementing precise analog constraints to mitigate liquid fluctuations.</li>
+                        <li><strong>Multi-Floor Elevator System:</strong> Constructed state machine indexing matrices in Structured Text (SCL) and Ladder Logic (LAD) to track cabin positioning[cite: 835, 985]. Filtered physical limit switch signal bounce using TP timer arrays set to a strict 200 ms debounce step window[cite: 870].</li>
+                        <li><strong>Analog Signal Generation & PID Tuning Loops:</strong> Configured cyclic interrupt blocks (20 ms resolution) running custom mathematical functions to map raw integers into real peripheral bounds [cite: 202] (0 to 27648 matching a 0-10V scale [cite: 129]). Integrated Siemens PID_Compact logic blocks to command air-stream leveling setups, mitigating wind-up behaviors with custom parameter clamp arrays[cite: 503, 781, 788].</li>
+                        <li><strong>Filters & Signal Processing:</strong> Programmed discretization filters via difference equations in an isochronous 40 ms cyclic block to process noisy analog signals from physical ADC pipelines[cite: 364, 382, 387].</li>
+                        <li><strong>HMI Integration & Process Simulation:</strong> Developed custom visualization views and remote controls for an industrial sewage pumping station simulation using a SIMATIC KTP600 Basic HMI panel over Profinet[cite: 1016, 1036, 1040]. Integrated dedicated data tracking architectures by mapping logically isolated global data blocks (DataHMI and DataPLC) through explicit exchange functions (PLC_HMI) to optimize cycle communication latency, refresh boundaries, and tag parsing[cite: 1052, 1058, 1061, 1081]. Implemented alternating dual-pump hysteresis control blocks bound to real-time level sensor thresholds and error state indicators[cite: 1125, 1128, 1144].</li>
+                        <li><strong>Deep Sensor Proficiency:</strong> Calibrated gain curves, diagnostic checks (wire-breaks, overflows), scaling offsets, and noise-filtering algorithms directly against physical S7-1200/Signal Board SB1232 AQ architectures[cite: 124, 140].</li>
+                    </ul>
+                    <div class="project-tech">Technologies: Siemens TIA Portal, Simatic S7-1200, SIMATIC HMI KTP600, Profinet, SCL, Ladder Logic (LAD), PID Tuning, Signal Discretization, Hysteresis Loops [cite: 124, 1036, 1128]</div>
+                </div>
+
+                <div class="timeline-item project-card" data-category="cv">
+                    <div class="project-date">[03/2026 - Current] [cite: 57]</div>
+                    <h3 class="project-title">Automated Mineral & Rock Detection System</h3>
+                    <ul>
+                        <li>Collaborating within a university-supervised multidisciplinary team for real-time rock classification[cite: 59].</li>
+                        <li>Leading development and custom training frameworks of YOLO-based models for high-accuracy object detection[cite: 60].</li>
+                        <li>Partnering across Civil Engineering teams to design field datasets and optimize dataset annotation hyperparameters[cite: 61, 62].</li>
+                        <li>Implementing robust vision pipelines using OpenCV for real-time inference and deployment verification[cite: 63].</li>
+                    </ul>
+                    <div class="project-tech">Technologies: Python, YOLOv8, OpenCV, Computer Vision, Dataset Management [cite: 64]</div>
+                </div>
+
+                <div class="timeline-item project-card" data-category="robotics">
+                    <div class="project-date">[03/2026 - Current] [cite: 57]</div>
+                    <h3 class="project-title">ROS2 Robotic Manipulation Simulation (UR10 & PSYONIC Hand)</h3>
+                    <ul>
+                        <li>Developing an advanced simulation framework combining a UR10 robotic arm with a PSYONIC Ability Hand[cite: 66, 67].</li>
+                        <li>Utilizing Mujoco and Isaac Sim environments to construct and mirror physical manipulation setups[cite: 67].</li>
+                        <li>Implementing complex motion planning and trajectory generation handling via ROS2 and MoveIt frameworks[cite: 68].</li>
+                        <li>Applying essential robotic kinematics and grip control matrices inside a Linux (Ubuntu) development environment[cite: 69, 70].</li>
+                    </ul>
+                    <div class="project-tech">Technologies: ROS2, Python, Ubuntu Linux, Mujoco / Isaac Sim, MoveIt [cite: 72]</div>
+                </div>
+
+                <div class="timeline-item project-card" data-category="embedded">
+                    <div class="project-date">[11/2025 - 02/2026] [cite: 73]</div>
+                    <h3 class="project-title">Autonomous Line Follower Robot</h3>
+                    <ul>
+                        <li>Followed a thorough Electronic Design Methodology from structural concept to physical hardware execution[cite: 75, 77].</li>
+                        <li>Designed complete schematics and PCB layout layers inside KiCad, maintaining robust power lines and signal integrity[cite: 75].</li>
+                        <li>Assembled and calibrated the physical prototype, diagnosing hardware stability and validating electrical continuity[cite: 77].</li>
+                    </ul>
+                    <div class="project-tech">Technologies: Embedded Systems, Sensors, Motor Drivers, PCB Design (KiCad) [cite: 78]</div>
+                    <a href="https://github.com/abdosalama11/Line-Follower-Car.git" target="_blank" class="project-link"><i class="fab fa-github"></i> View Repository</a>
+                </div>
+
+                <div class="timeline-item project-card" data-category="embedded">
+                    <div class="project-date">[06/2024 - 09/2024] [cite: 36]</div>
+                    <h3 class="project-title">C++ Super-Mario Game Engine</h3>
+                    <ul>
+                        <li>Developed a high-performance 2D platformer framework using C++ and SFML, prioritizing optimized rendering components[cite: 38].</li>
+                        <li>Applied clean OOP principles (Inheritance, Polymorphism, Encapsulation) to develop a modular, scalable engine[cite: 39].</li>
+                        <li>Implemented robust memory structures leveraging smart pointers and RAII to eliminate memory leaks entirely[cite: 40].</li>
+                        <li>Built custom structures (Vectors, Queues) and design patterns for sprite indexing, collision checks, and state handling[cite: 41, 42].</li>
+                    </ul>
+                    <div class="project-tech">Technologies: C++, SFML, OOP, Memory Management, Smart Pointers, Data Structures, Git [cite: 43]</div>
+                    <a href="https://github.com/abdosalama11/SuperMario.git" target="_blank" class="project-link"><i class="fab fa-github"></i> View Repository</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2><i class="fas fa-paper-plane"></i> Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info-block">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Poznań, Poland (Available for relocation all over Europe) [cite: 6, 11]</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+48577175940">(+48) 577175940 [cite: 2]</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:abdo.tayel103@gmail.com">abdo.tayel103@gmail.com [cite: 2]</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/Abdelrahman-Tayel" target="_blank">Abdelrahman Tayel [cite: 3]</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/abdosalama11" target="_blank">abdosalama11 [cite: 5]</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Abdelrahman Tayel. Built with clean, modern web technologies.</p>
+    </footer>
+
+    <script>
+        // 1. Theme Toggle Configuration
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                icon.className = 'fas fa-sun';
+            }
+        });
+
+        // 2. Chronological Timeline Filter Engine
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // 3. Dynamic Navigation Active Tracking on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a:not(.theme-toggle)');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
