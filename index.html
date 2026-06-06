@@ -41,7 +41,7 @@
         }
 
         header {
-            position: fixed; 
+            position: fixed;
             top: 0;
             width: 100%;
             background-color: var(--card-bg);
@@ -251,6 +251,16 @@
             margin-bottom: 0.6rem;
         }
 
+        .timeline-subheading {
+            color: var(--text-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.25rem;
+        }
+
         /* Filter Controls */
         .filter-buttons {
             display: flex;
@@ -404,6 +414,7 @@
                         <span class="skill-badge">Python</span>
                         <span class="skill-badge">Siemens SCL (Structured Text)</span>
                         <span class="skill-badge">Ladder Logic (LAD)</span>
+                        <span class="skill-badge">RAPID (ABB)</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -413,6 +424,7 @@
                         <span class="skill-badge">Ultrasonic Transmitters</span>
                         <span class="skill-badge">ADC (10-bit) / DAC (12-bit) Scaling</span>
                         <span class="skill-badge">Signal Debounce & Filtering</span>
+                        <span class="skill-badge">TCP Calibration & Alignment</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -420,7 +432,7 @@
                     <div class="skill-tags">
                         <span class="skill-badge">Siemens TIA Portal v17/v18</span>
                         <span class="skill-badge">Simatic S7-1200 / S7-1500 Controllers</span>
-                        <span class="skill-badge">SIMMATIC HMI Panel Frameworks</span>
+                        <span class="skill-badge">ABB RobotStudio</span>
                         <span class="skill-badge">Profinet Network Architecture</span>
                     </div>
                 </div>
@@ -482,6 +494,47 @@
                     <div class="project-tech">Technologies: Siemens TIA Portal, Simatic S7-1200, SIMATIC HMI KTP600, Profinet, SCL, Ladder Logic (LAD), PID Tuning, Signal Discretization, Hysteresis Loops</div>
                 </div>
 
+                <!-- Industrial Robotics Card (ABB, KUKA & UR) -->
+                <div class="timeline-item project-card" data-category="robotics">
+                    <div class="project-date">[04/2026 - Current]</div>
+                    <h3 class="project-title">Industrial Robotics Simulation & Multi-Platform Kinematics</h3>
+                    
+                    <div class="timeline-subheading">Industrial Robotic Cell Simulation & Path Generation (ABB RobotStudio)</div>
+                    <ul>
+                        <li><strong>Trajectory & Speed Control:</strong> Designed a virtual robotic cell to program complex path trajectories (Linear, Circular, and Joint movements) for an ABB 6-DOF manipulator along irregular surfaces.</li>
+                        <li><strong>Coordinate Systems (WorkObjects):</strong> Utilized WorkObjects (workobj) to attach targets to dynamic environmental objects, ensuring robust path adaptation when objects are relocated.</li>
+                        <li><strong>Collision Detection:</strong> Calibrated a custom bent static tool with manual Tool Center Point (TCP) offset configurations and implemented advanced collision detection to guarantee safe operations with zero errors.</li>
+                    </ul>
+
+                    <div class="timeline-subheading">Event-Driven Logic & Smart Material Handling (ABB & RAPID)</div>
+                    <ul>
+                        <li><strong>RAPID Programming:</strong> Authored custom RAPID code logic to govern automated pick-and-place routines based on live sensor feedback.</li>
+                        <li><strong>Mechanism & Gripper Design:</strong> Modeled and assembled a functional smart gripper mechanism entirely within RobotStudio to interact with components on multi-table layouts.</li>
+                        <li><strong>Conveyor Tracking Integration:</strong> Simulated a multi-robot synchronized cell logic where a manipulator dynamically tracks and processes irregular objects moving continuously on a conveyor belt.</li>
+                    </ul>
+
+                    <div class="timeline-subheading">Advanced Manipulation & Calibration Tasks (KUKA & Universal Robots)</div>
+                    <ul>
+                        <li><strong>Universal Robots (UR) Sequence Automation:</strong> Programmed and simulated a Universal Robots (UR) manipulator to execute precise material handling tasks, sorting and stacking blocks into specific sequential orders and configurations.</li>
+                        <li><strong>KUKA Intelligent Programming:</strong> Developed an event-driven algorithmic pipeline utilizing system Flags to manage state-machine execution for high-frequency synchronization tasks (tennis ball juggling simulation).</li>
+                        <li><strong>Tool Calibration:</strong> Executed precise Tool Center Point (TCP) calibration by reference and calibrated tool orientation on KUKA industrial arms.</li>
+                    </ul>
+                    <div class="project-tech">Technologies: ABB RobotStudio, RAPID, KUKA KRL, Universal Robots (UR Sim), Tool Center Point (TCP) Calibration, WorkObjects, Collision Testing</div>
+                </div>
+
+                <!-- ROS2 Robotic Manipulation Simulation Card -->
+                <div class="timeline-item project-card" data-category="robotics">
+                    <div class="project-date">[03/2026 - Current]</div>
+                    <h3 class="project-title">ROS2 Robotic Manipulation Simulation (UR10 & PSYONIC Hand)</h3>
+                    <ul>
+                        <li>Developing an advanced simulation framework combining a UR10 robotic arm with a PSYONIC Ability Hand.</li>
+                        <li>Utilizing Mujoco and Isaac Sim environments to construct and mirror physical manipulation setups.</li>
+                        <li>Implementing complex motion planning and trajectory generation handling via ROS2 and MoveIt frameworks.</li>
+                        <li>Applying essential robotic kinematics and grip control matrices inside a Linux (Ubuntu) development environment.</li>
+                    </ul>
+                    <div class="project-tech">Technologies: ROS2, Python, Ubuntu Linux, Mujoco / Isaac Sim, MoveIt</div>
+                </div>
+
                 <!-- AI & Computer Vision Card -->
                 <div class="timeline-item project-card" data-category="cv">
                     <div class="project-date">[03/2026 - Current]</div>
@@ -493,19 +546,6 @@
                         <li>Implementing robust vision pipelines using OpenCV for real-time inference and deployment verification.</li>
                     </ul>
                     <div class="project-tech">Technologies: Python, YOLOv8, OpenCV, Computer Vision, Dataset Management</div>
-                </div>
-
-                <!-- Robotics Card -->
-                <div class="timeline-item project-card" data-category="robotics">
-                    <div class="project-date">[03/2026 - Current]</div>
-                    <h3 class="project-title">ROS2 Robotic Manipulation Simulation (UR10 & PSYONIC Hand)</h3>
-                    <ul>
-                        <li>Developing an advanced simulation framework combining a UR10 robotic arm with a PSYONIC Ability Hand.</li>
-                        <li>Utilizing Mujoco and Isaac Sim environments to construct and mirror physical manipulation setups.</li>
-                        <li>Implementing complex motion planning and trajectory generation handling via ROS2 and MoveIt frameworks.</li>
-                        <li>Applying essential robotic kinematics and grip control matrices inside a Linux (Ubuntu) development environment.</li>
-                    </ul>
-                    <div class="project-tech">Technologies: ROS2, Python, Ubuntu Linux, Mujoco / Isaac Sim, MoveIt</div>
                 </div>
 
                 <!-- KiCad Embedded Card -->
