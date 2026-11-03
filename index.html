@@ -5,800 +5,235 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdelrahman Tayel — Automatic Control &amp; Robotics Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#060612;--bg1:#0b0b1a;--bg2:#0f0f22;--bg3:#141428;
-  --glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.07);--glass-hover:rgba(255,255,255,0.06);
-  --primary:#6c63ff;--primary2:#8b82ff;--secondary:#00d4ff;--accent:#ff6b6b;--green:#00ff88;
-  --text:#f0f0ff;--text2:#9898c0;--text3:#555575;
-  --grad:linear-gradient(135deg,#6c63ff,#00d4ff);
-}
+:root{--bg:#060612;--bg1:#0b0b1a;--bg2:#0f0f22;--glass:rgba(255,255,255,.03);--gb:rgba(255,255,255,.08);--p:#6c63ff;--p2:#8b82ff;--s:#00d4ff;--g:#00ff88;--t:#f0f0ff;--t2:#9898c0;--t3:#6a6a90;--grad:linear-gradient(135deg,#6c63ff,#00d4ff)}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;cursor:none}
-.cursor{width:10px;height:10px;background:var(--primary);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
-.cursor-ring{width:36px;height:36px;border:1.5px solid rgba(108,99,255,0.5);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s}
-body::before{content:'';position:fixed;inset:0;opacity:0.35;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E")}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 6%;height:68px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s}
-nav.scrolled{background:rgba(6,6,18,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--glass-border)}
-.nav-logo{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:500;letter-spacing:0.05em}
-.nav-logo span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:0.8rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;transition:color 0.2s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--grad);transition:width 0.3s}
-.nav-links a:hover{color:var(--text)}
-.nav-links a:hover::after{width:100%}
-.nav-cta{background:var(--grad);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:0.8rem;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:600;transition:opacity 0.2s,transform 0.2s;text-decoration:none;display:inline-flex;align-items:center}
-.nav-cta:hover{opacity:0.85;transform:translateY(-1px)}
-
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:0 6%;gap:4rem;position:relative;overflow:hidden}
-.hero-orb1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(108,99,255,0.12) 0%,transparent 70%);top:-200px;left:-200px;pointer-events:none}
-.hero-orb2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,0.08) 0%,transparent 70%);bottom:-100px;right:5%;pointer-events:none}
-.hero-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
-.hero-content{flex:1;max-width:620px;position:relative;z-index:2}
-.hero-badge{display:inline-flex;align-items:center;gap:10px;background:var(--glass);border:1px solid var(--glass-border);padding:8px 18px;border-radius:100px;font-size:0.78rem;font-family:'JetBrains Mono',monospace;color:var(--text2);margin-bottom:2rem;letter-spacing:0.04em}
-.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 2s infinite;flex-shrink:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-.hero h1{font-size:clamp(2.6rem,5vw,4.4rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;margin-bottom:0.5rem}
-.name-grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-role{font-size:1.05rem;font-family:'JetBrains Mono',monospace;color:var(--secondary);margin-bottom:1.25rem;font-weight:400;letter-spacing:0.02em}
-.hero-role::before{content:'// ';color:var(--text3)}
-.hero-desc{font-size:0.95rem;color:var(--text2);line-height:1.75;max-width:540px;font-weight:300;margin-bottom:2.5rem}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.btn-grad{background:var(--grad);color:#fff;border:none;padding:13px 28px;border-radius:10px;font-size:0.9rem;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 0 30px rgba(108,99,255,0.3)}
-.btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(108,99,255,0.4)}
-.btn-outline{background:none;color:var(--text);border:1px solid var(--glass-border);padding:13px 28px;border-radius:10px;font-size:0.9rem;cursor:pointer;font-family:'Outfit',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
-.btn-outline:hover{background:var(--glass);border-color:rgba(108,99,255,0.4)}
-.hero-socials{display:flex;gap:0.75rem;flex-wrap:wrap}
-.social-link{height:40px;padding:0 14px;border-radius:10px;background:var(--glass);border:1px solid var(--glass-border);display:flex;align-items:center;gap:7px;color:var(--text3);text-decoration:none;font-size:0.78rem;font-weight:500;font-family:'JetBrains Mono',monospace;transition:all 0.2s;white-space:nowrap}
-.social-link:hover{background:rgba(108,99,255,0.15);border-color:rgba(108,99,255,0.4);color:var(--primary2)}
-
-/* PHOTO FRAME */
-.hero-photo-wrap{flex-shrink:0;position:relative;z-index:2;margin-left:auto}
-.hero-photo-frame{width:300px;height:400px;border-radius:24px;overflow:hidden;border:1px solid var(--glass-border);position:relative;background:var(--bg2)}
-.hero-photo-frame img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
-.photo-glow{position:absolute;inset:-2px;border-radius:26px;background:var(--grad);z-index:0;opacity:0.35;filter:blur(20px)}
-.hero-float-badge{position:absolute;background:var(--bg2);border:1px solid var(--glass-border);border-radius:12px;padding:10px 14px;font-size:0.72rem;font-family:'JetBrains Mono',monospace;backdrop-filter:blur(10px);z-index:5}
-.hfb1{bottom:-16px;left:-36px;color:var(--green)}
-.hfb2{top:-10px;right:-28px;color:var(--secondary)}
-.hfb1 strong,.hfb2 strong{display:block;font-size:1.1rem;font-weight:800;font-family:'Outfit',sans-serif;margin-bottom:2px}
-
-/* UNI TRACK */
-.uni-track{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:1.25rem 1.5rem;margin-top:2rem}
-.uni-track-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem}
-.uni-track-label{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px}
-.uni-track-title{font-size:0.84rem;font-weight:600;color:var(--text)}
-.uni-track-pct{font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--secondary);font-weight:600;flex-shrink:0;padding-top:16px}
-.uni-bar-bg{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
-.uni-bar-fill{height:100%;background:var(--grad);border-radius:3px;width:0%;transition:width 1.6s cubic-bezier(0.4,0,0.2,1)}
-.uni-dates{display:flex;justify-content:space-between;margin-top:0.5rem}
-.uni-dates span{font-family:'JetBrains Mono',monospace;font-size:0.67rem;color:var(--text3)}
-.uni-dates .now-label{color:var(--primary2)}
-
-/* SECTIONS */
-section{padding:110px 6%;position:relative;z-index:2}
-.sec-num{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;color:var(--primary);text-transform:uppercase;margin-bottom:0.75rem}
-.sec-title{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:0.5rem}
-.sec-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.divider{width:60px;height:3px;background:var(--grad);border-radius:2px;margin-bottom:3rem}
-
-/* ABOUT */
-.about-layout{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start}
-.about-text p{color:var(--text2);font-size:0.93rem;line-height:1.85;font-weight:300;margin-bottom:1rem}
-.about-text p strong{color:var(--text);font-weight:600}
-.lang-row{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.2rem}
-.lang-badge{background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-family:'JetBrains Mono',monospace}
-.lang-badge strong{color:var(--secondary)}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-.stat-box{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:1.4rem;text-align:center;transition:border-color 0.2s}
-.stat-box:hover{border-color:rgba(108,99,255,0.3)}
-.stat-val{font-size:2.1rem;font-weight:800;letter-spacing:-0.04em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat-lbl{font-size:0.7rem;color:var(--text3);font-family:'JetBrains Mono',monospace;letter-spacing:0.06em;margin-top:0.25rem}
-
-/* SKILLS */
-#skills{background:var(--bg1)}
-.skills-layout{display:grid;gap:1.25rem}
-.skill-domain{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:1.4rem 1.75rem;display:grid;grid-template-columns:220px 1fr;gap:2rem;align-items:center;transition:all 0.3s;position:relative;overflow:hidden}
-.skill-domain::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--domain-color,var(--grad));border-radius:0 2px 2px 0}
-.skill-domain:hover{background:var(--glass-hover);border-color:rgba(255,255,255,0.12);transform:translateX(4px)}
-.domain-icon-wrap{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:0.7rem;border:1px solid var(--glass-border)}
-.domain-name{font-size:0.9rem;font-weight:700;margin-bottom:0.2rem;line-height:1.3}
-.domain-jobtitle{font-size:0.65rem;font-family:'JetBrains Mono',monospace;color:var(--text3);letter-spacing:0.04em;line-height:1.6}
-.domain-tags{display:flex;flex-wrap:wrap;gap:6px}
-.dtag{background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:7px;padding:4px 10px;font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:var(--text2);transition:all 0.2s}
-.dtag:hover{background:rgba(108,99,255,0.12);border-color:rgba(108,99,255,0.35);color:var(--primary2)}
-
-/* JOURNEY */
-.journey-wrap{position:relative}
-.tl-line{position:absolute;left:180px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--primary),var(--secondary),transparent)}
-.tl-item{display:grid;grid-template-columns:180px 1fr;gap:3rem;margin-bottom:2.5rem;position:relative}
-.tl-item::after{content:'';position:absolute;left:180px;top:22px;width:9px;height:9px;border-radius:50%;background:var(--primary);border:2px solid var(--bg);transform:translateX(-50%);box-shadow:0 0 12px rgba(108,99,255,0.6)}
-.tl-left{text-align:right;padding-top:1rem}
-.tl-date{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--secondary);letter-spacing:0.06em;margin-bottom:0.3rem;line-height:1.5}
-.tl-type{font-size:0.65rem;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em}
-.tl-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:1.4rem 1.6rem;transition:all 0.3s}
-.tl-card:hover{background:var(--glass-hover);border-color:rgba(108,99,255,0.25);transform:translateY(-2px)}
-.tl-role{font-size:1rem;font-weight:700;margin-bottom:0.2rem}
-.tl-company{font-size:0.82rem;color:var(--secondary);font-family:'JetBrains Mono',monospace;margin-bottom:0.875rem}
-.tl-bullets{list-style:none;margin-bottom:0.875rem;display:flex;flex-direction:column;gap:0.4rem}
-.tl-bullets li{font-size:0.83rem;color:var(--text2);font-weight:300;line-height:1.65;padding-left:1rem;position:relative}
-.tl-bullets li::before{content:'▸';position:absolute;left:0;color:var(--primary);font-size:0.65rem;top:3px}
-.tl-tech{display:flex;flex-wrap:wrap;gap:5px}
-.tl-badge{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.2);color:var(--primary2);border-radius:6px;padding:3px 9px;font-size:0.68rem;font-family:'JetBrains Mono',monospace}
-
-/* CERTIFICATIONS */
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
-.cert-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:1.25rem 1.4rem;transition:all 0.3s;display:flex;flex-direction:column;justify-content:space-between}
-.cert-card:hover{border-color:rgba(108,99,255,0.3);transform:translateY(-2px)}
-.cert-title{font-size:0.88rem;font-weight:600;margin-bottom:0.3rem}
-.cert-issuer{font-size:0.75rem;color:var(--secondary);font-family:'JetBrains Mono',monospace;margin-bottom:0.3rem}
-.cert-date{font-size:0.7rem;color:var(--text3);font-family:'JetBrains Mono',monospace}
-.cert-status{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.65rem;font-family:'JetBrains Mono',monospace;margin-top:0.6rem;align-self:flex-start}
-.status-sched{background:rgba(255,170,0,0.1);color:#ffaa00;border:1px solid rgba(255,170,0,0.2)}
-.status-prep{background:rgba(0,212,255,0.1);color:var(--secondary);border:1px solid rgba(0,212,255,0.2)}
-.status-done{background:rgba(0,255,136,0.1);color:var(--green);border:1px solid rgba(0,255,136,0.2)}
-
-/* PROJECTS */
-#projects{background:var(--bg1)}
-.proj-filter{display:flex;gap:0.55rem;margin-bottom:2.5rem;flex-wrap:wrap}
-.pf-btn{background:var(--glass);border:1px solid var(--glass-border);color:var(--text2);padding:6px 14px;border-radius:7px;font-size:0.73rem;font-family:'JetBrains Mono',monospace;cursor:pointer;transition:all 0.2s;letter-spacing:0.03em}
-.pf-btn.active,.pf-btn:hover{background:rgba(108,99,255,0.15);border-color:rgba(108,99,255,0.4);color:var(--primary2)}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.25rem}
-.proj-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column}
-.proj-card:hover{border-color:rgba(108,99,255,0.3);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
-.proj-img-area{height:170px;background:var(--bg2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.proj-img-area img.proj-img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform 0.4s}
-.proj-card:hover .proj-img{transform:scale(1.04)}
-.proj-upload-ph{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text3);cursor:pointer;transition:color 0.2s;width:100%;height:100%;justify-content:center;position:relative;z-index:2}
-.proj-upload-ph:hover{color:var(--primary2)}
-.proj-upload-ph svg{width:28px;height:28px;opacity:0.35}
-.proj-upload-ph span{font-size:0.7rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.05em}
-.proj-type-badge{position:absolute;top:10px;left:10px;background:rgba(6,6,18,0.82);border:1px solid var(--glass-border);border-radius:100px;padding:3px 10px;font-size:0.63rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.06em;color:var(--text2);backdrop-filter:blur(10px);z-index:3}
-.proj-body{padding:1.2rem 1.4rem;flex:1;display:flex;flex-direction:column;gap:0.5rem}
-.proj-title{font-size:0.92rem;font-weight:700}
-.proj-desc{font-size:0.8rem;color:var(--text2);line-height:1.68;font-weight:300;flex:1}
-.proj-footer{display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-top:0.25rem}
-.proj-tags{display:flex;flex-wrap:wrap;gap:4px}
-.proj-tag{background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.12);color:var(--text3);border-radius:5px;padding:2px 7px;font-size:0.63rem;font-family:'JetBrains Mono',monospace}
-.proj-link{width:30px;height:30px;border-radius:7px;border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;color:var(--text3);text-decoration:none;transition:all 0.2s;flex-shrink:0}
-.proj-link:hover{background:rgba(108,99,255,0.15);border-color:rgba(108,99,255,0.4);color:var(--primary2)}
-
-/* SOFT SKILLS */
-.soft-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;padding:0.9rem 1.1rem;display:flex;align-items:center;gap:0.875rem;transition:all 0.2s}
-.soft-card:hover{border-color:rgba(108,99,255,0.3);background:var(--glass-hover)}
-.soft-icon{font-size:1.2rem;flex-shrink:0}
-.soft-label{font-size:0.8rem;font-weight:600}
-
-/* CONTACT */
-#contact{background:var(--bg1)}
-.contact-outer{background:var(--glass);border:1px solid var(--glass-border);border-radius:22px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;position:relative;overflow:hidden}
-.contact-outer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1px;background:var(--grad);opacity:0.5}
-.contact-info h3{font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem}
-.contact-info p{color:var(--text2);font-size:0.875rem;font-weight:300;line-height:1.75;margin-bottom:1.75rem}
-.contact-item{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--glass-border);text-decoration:none;color:var(--text2);transition:all 0.2s}
-.contact-item:last-child{border-bottom:none}
-.contact-item:hover{color:var(--text);padding-left:4px}
-.ci-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.ci-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text3);letter-spacing:0.05em;margin-bottom:2px}
-.ci-value{font-size:0.875rem;color:var(--text);font-weight:500}
-.contact-right{display:flex;flex-direction:column;gap:1.5rem;justify-content:center}
-.contact-copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.22);color:var(--primary2);border-radius:9px;padding:11px 18px;font-family:'JetBrains Mono',monospace;font-size:0.74rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px;width:100%}
-.contact-copy-btn:hover{background:rgba(108,99,255,0.18);border-color:rgba(108,99,255,0.4)}
-.avail-box{background:var(--bg2);border:1px solid var(--glass-border);border-radius:12px;padding:1.25rem}
-.avail-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text3);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:0.5rem}
-.avail-text{font-size:0.84rem;color:var(--text2);font-weight:300;line-height:1.65}
-.avail-text strong{color:var(--text)}
-
-.toast{position:fixed;bottom:6rem;right:2rem;background:var(--grad);color:#fff;padding:10px 22px;border-radius:100px;font-size:0.8rem;font-family:'JetBrains Mono',monospace;z-index:1000;opacity:0;transform:translateY(12px);transition:all 0.3s;pointer-events:none;font-weight:500}
-.toast.show{opacity:1;transform:translateY(0)}
-.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.7s,transform 0.7s}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-footer{border-top:1px solid var(--glass-border);padding:2rem 6%;display:flex;justify-content:space-between;align-items:center;color:var(--text3);font-size:0.72rem;font-family:'JetBrains Mono',monospace;position:relative;z-index:2}
-footer b{color:var(--primary2)}
-@media(max-width:960px){
-  .hero{flex-direction:column;padding-top:100px;gap:2.5rem}
-  .hero-photo-wrap{margin:0 auto}
-  .hero-actions,.hero-socials{justify-content:center}
-  .about-layout{grid-template-columns:1fr;gap:2.5rem}
-  .skill-domain{grid-template-columns:1fr;gap:1rem}
-  .tl-item{grid-template-columns:1fr;padding-left:1.5rem}
-  .tl-line{left:0}
-  .tl-item::after{left:0}
-  .tl-left{text-align:left;padding-top:0}
-  .contact-outer{grid-template-columns:1fr;padding:2rem}
-  .nav-links{display:none}
-}
+body{background:var(--bg);color:var(--t);font-family:'Outfit',sans-serif;overflow-x:hidden;line-height:1.6}
+a{color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;height:64px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(6,6,18,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--gb)}
+.logo{font-family:'JetBrains Mono',monospace;font-weight:500}
+.logo span,.grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.links{display:flex;gap:1.6rem;list-style:none}
+.links a{text-decoration:none;color:var(--t2);font-size:.8rem;font-family:'JetBrains Mono',monospace}
+.links a:hover{color:var(--t)}
+.btn{background:var(--grad);color:#fff;padding:12px 24px;border-radius:10px;font-weight:600;font-size:.88rem;text-decoration:none;display:inline-block;border:0;cursor:pointer;font-family:inherit}
+.btn.o{background:none;border:1px solid var(--gb);color:var(--t)}
+.btn:hover{opacity:.88}
+section{padding:100px 6%}
+.hero{min-height:100vh;display:flex;align-items:center;gap:4rem;padding-top:110px;background:radial-gradient(circle at 10% 0,rgba(108,99,255,.14),transparent 55%)}
+.hero-c{flex:1;max-width:640px}
+.badge{display:inline-flex;gap:10px;align-items:center;background:var(--glass);border:1px solid var(--gb);padding:7px 16px;border-radius:100px;font-size:.76rem;font-family:'JetBrains Mono',monospace;color:var(--t2);margin-bottom:1.6rem}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g)}
+h1{font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-.03em}
+.role{font-family:'JetBrains Mono',monospace;color:var(--s);margin:.6rem 0 1.1rem}
+.desc{color:var(--t2);font-weight:300;max-width:540px;margin-bottom:2rem}
+.row{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.soc{padding:8px 14px;border:1px solid var(--gb);border-radius:10px;background:var(--glass);text-decoration:none;font-size:.78rem;font-family:'JetBrains Mono',monospace;color:var(--t2)}
+.soc:hover{color:var(--p2);border-color:var(--p)}
+.uni{background:var(--glass);border:1px solid var(--gb);border-radius:14px;padding:1.1rem 1.4rem;margin-top:1.8rem}
+.uni b{font-size:.84rem}.uni small{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--t3);display:flex;justify-content:space-between;margin-top:.4rem}
+.bar{height:6px;background:rgba(255,255,255,.07);border-radius:3px;margin-top:.6rem;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--grad);transition:width 1.4s}
+.photo{position:relative;width:290px;height:390px;flex-shrink:0;margin-left:auto;border-radius:24px;border:1px solid var(--gb);background:var(--bg2);overflow:hidden;box-shadow:0 0 50px rgba(108,99,255,.25)}
+.photo span{position:absolute;inset:0;display:grid;place-items:center;font-size:4rem;font-weight:800;color:var(--t3)}
+.photo img{position:relative;width:100%;height:100%;object-fit:cover;display:block}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--p2);margin-bottom:.5rem}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;letter-spacing:-.03em;margin-bottom:2.2rem}
+.alt{background:var(--bg1)}
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:3.5rem}
+.about p{color:var(--t2);font-weight:300;margin-bottom:1rem}.about strong{color:var(--t);font-weight:600}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.4rem}
+.stat{background:var(--glass);border:1px solid var(--gb);border-radius:14px;padding:1.2rem;text-align:center}
+.stat b{display:block;font-size:1.9rem;font-weight:800}.stat small{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--t3)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:rgba(255,255,255,.04);border:1px solid var(--gb);border-radius:7px;padding:4px 10px;font-size:.72rem;font-family:'JetBrains Mono',monospace;color:var(--t2)}
+.sk{display:grid;grid-template-columns:230px 1fr;gap:1.6rem;align-items:center;background:var(--glass);border:1px solid var(--gb);border-left:3px solid var(--p);border-radius:14px;padding:1.2rem 1.5rem;margin-bottom:1rem}
+.sk b{display:block}.sk small{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--t3)}
+.tl{border-left:1px solid var(--p);margin-left:6px}
+.job{position:relative;padding:0 0 2rem 2rem}
+.job::before{content:'';position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--p);box-shadow:0 0 10px var(--p)}
+.job small{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--s)}
+.card{background:var(--glass);border:1px solid var(--gb);border-radius:14px;padding:1.3rem 1.5rem;margin-top:.4rem}
+.card h3{font-size:1rem}.co{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--s);margin:.15rem 0 .7rem}
+.card ul{list-style:none;display:grid;gap:.4rem;margin-bottom:.8rem}
+.card li{font-size:.84rem;color:var(--t2);font-weight:300;padding-left:1rem;position:relative}
+.card li::before{content:'▸';position:absolute;left:0;color:var(--p);font-size:.65rem;top:4px}
+.flt{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.flt button{background:var(--glass);border:1px solid var(--gb);color:var(--t2);padding:6px 14px;border-radius:7px;font-size:.73rem;font-family:'JetBrains Mono',monospace;cursor:pointer}
+.flt button.on,.flt button:hover{background:rgba(108,99,255,.15);border-color:var(--p);color:var(--p2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.pc{background:var(--glass);border:1px solid var(--gb);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.pc:hover{border-color:rgba(108,99,255,.4)}
+.ph{padding:1.1rem 1.4rem .4rem;background:linear-gradient(135deg,rgba(108,99,255,.18),rgba(0,212,255,.08))}
+.ph span{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--t2)}
+.pb{padding:1rem 1.4rem 1.3rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.pb h3{font-size:.95rem}.pb p{font-size:.8rem;color:var(--t2);font-weight:300;flex:1}
+.pc.feat{border-color:rgba(108,99,255,.5)}
+.ed{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.ed .card{margin:0}.ed small{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--t3)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:3rem;background:var(--glass);border:1px solid var(--gb);border-radius:22px;padding:2.5rem}
+.ci{display:block;padding:12px 0;border-bottom:1px solid var(--gb);text-decoration:none;color:var(--t)}
+.ci small{display:block;font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--t3)}
+.cb{display:flex;flex-direction:column;gap:.7rem;justify-content:center}
+.cb button{background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.25);color:var(--p2);border-radius:9px;padding:11px;font-family:'JetBrains Mono',monospace;font-size:.75rem;cursor:pointer}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--grad);padding:10px 22px;border-radius:100px;font-size:.8rem;opacity:0;transition:.3s;pointer-events:none}
+.toast.show{opacity:1}
+footer{border-top:1px solid var(--gb);padding:1.8rem 6%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;color:var(--t3);font-size:.72rem;font-family:'JetBrains Mono',monospace}
+a:focus-visible,button:focus-visible{outline:2px solid var(--s);outline-offset:2px}
+@media(max-width:960px){.hero{flex-direction:column;gap:2.5rem}.photo{margin:0 auto}.about,.contact,.sk{grid-template-columns:1fr}.links{display:none}}
 </style>
 </head>
 <body>
-
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<nav id="mainNav">
-  <div class="nav-logo"><span>AT</span> — Portfolio</div>
-  <ul class="nav-links">
-    <li><a href="#about">about</a></li>
-    <li><a href="#skills">skills</a></li>
-    <li><a href="#journey">experience</a></li>
-    <li><a href="#projects">projects</a></li>
-    <li><a href="#certs">qualifications</a></li>
-    <li><a href="#contact">contact</a></li>
-  </ul>
-  <a class="nav-cta" href="#contact">Get in Touch</a>
+<nav>
+  <div class="logo"><span>ABDELRAHMAN TAYEL</span> — Portfolio</div>
+  <ul class="links"><li><a href="#about">about</a></li><li><a href="#skills">skills</a></li><li><a href="#experience">experience</a></li><li><a href="#projects">projects</a></li><li><a href="#education">education</a></li><li><a href="#contact">contact</a></li></ul>
+  <a class="btn" href="#contact">Get in touch</a>
 </nav>
 
-<!-- ═══ HERO ═══ -->
 <section class="hero" id="home">
-  <div class="hero-orb1"></div><div class="hero-orb2"></div><div class="hero-lines"></div>
-  <div class="hero-content fade-up">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      <span>Open to Relocation: Katowice / EU &amp; Gulf</span>
+  <div class="hero-c">
+    <div class="badge"><span class="dot"></span>Open to relocation:Poland / EU &amp; </div>
+    <h1>Hi, I'm<br><span class="grad">Abdelrahman Tayel</span></h1>
+    <div class="role">Automatic Control &amp; Robotics Engineer</div>
+    <p class="desc">Final-year student at Poznań University of Technology with hands-on experience in PLC automation, PCB design, motor drive control, and robotics hardware, built through coursework, projects, and three internships.</p>
+    <div class="row">
+      <a class="btn" href="#projects">View my work</a>
+      <a class="btn o" href="Abdelrahman_Tayel_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn o" href="#contact">Contact me</a>
     </div>
-    <h1>Hi, I'm<br><span class="name-grad">Abdelrahman Tayel</span></h1>
-    <div class="hero-role">Automatic Control &amp; Robotics Engineer</div>
-    <p class="hero-desc">B.Eng student at Poznań University of Technology with practical experience across autonomous robotics (ROS2), embedded hardware, advanced PCB design, and industrial automation (PLC/RTU, LV/MV switchgear, and motor drive testing).</p>
-    <div class="hero-actions">
-      <a class="btn-grad" href="#projects">View My Work →</a>
-      <a class="btn-outline" href="#contact">Contact Me</a>
+    <div class="row">
+      <a class="soc" href="https://github.com/abdosalama11" target="_blank" rel="noopener">GitHub</a>
+      <a class="soc" href="https://www.linkedin.com/in/abdelrahman-tayel-7558a3249" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="soc" href="mailto:abdo.tayel103@gmail.com">Email</a>
     </div>
-    <div class="hero-socials">
-      <a class="social-link" href="https://github.com/abdosalama11" target="_blank">⌥ GitHub</a>
-      <a class="social-link" href="https://www.linkedin.com/in/abdelrahman-tayel-7558a3249" target="_blank">in LinkedIn</a>
-      <a class="social-link" href="mailto:abdo.tayel103@gmail.com">@ Email</a>
-    </div>
-    <div class="uni-track">
-      <div class="uni-track-top">
-        <div>
-          <div class="uni-track-label">University Progress</div>
-          <div class="uni-track-title">B.Eng · Automatic Control &amp; Robotics · PUT Poznań</div>
-        </div>
-        <div class="uni-track-pct" id="uniPct">–%</div>
-      </div>
-      <div class="uni-bar-bg"><div class="uni-bar-fill" id="uniBar"></div></div>
-      <div class="uni-dates">
-        <span>Oct 2023</span>
-        <span class="now-label" id="uniNow">Now</span>
-        <span>Apr 2027</span>
-      </div>
+    <div class="uni">
+      <b>B.Eng · Automatic Control &amp; Robotics · PUT Poznań</b> <span id="pct" style="float:right;color:var(--s);font-family:'JetBrains Mono',monospace;font-size:.82rem"></span>
+      <div class="bar"><i id="fill"></i></div>
+      <small><span>Oct 2023</span><span>Apr 2027</span></small>
     </div>
   </div>
-  <div class="hero-photo-wrap fade-up" style="transition-delay:0.2s">
-    <div class="photo-glow"></div>
-    <div class="hero-photo-frame">
-      <img src="my-photo.jpeg" alt="Abdelrahman Tayel">
-    </div>
-    <div class="hero-float-badge hfb1"><strong>PUT</strong><span>Poznań Univ.</span></div>
-    <div class="hero-float-badge hfb2"><strong>3+</strong><span>Industrial Internships</span></div>
+  <div class="photo">
+    <span>ABDELRAHMAN TAYEL</span>
+    <img src="my-photo.jpeg" alt="Portrait of Abdelrahman Tayel" width="290" height="390" onerror="this.style.display='none'">
   </div>
 </section>
 
-<!-- ═══ ABOUT ═══ -->
-<section id="about">
-  <div class="fade-up">
-    <p class="sec-num">01 — About Me</p>
-    <h2 class="sec-title">Engineering <span>Profile</span></h2>
-    <div class="divider"></div>
-  </div>
-  <div class="about-layout">
-    <div class="about-text fade-up">
-      <p>I am an <strong>Automatic Control and Robotics Engineer</strong> based in Poznań, Poland, graduating in April 2027. My background spans hands-on industrial automation, power distribution panels, embedded systems, and autonomous robotics.</p>
-      <p>I combine practical field experience in <strong>LV/MV switchgear manufacturing, RTU/PLC engineering, and motor drive testing</strong> with academic knowledge in <strong>ROS2 stacks, custom PCB layout, and closed-loop control</strong>. Adept at system simulation, hardware-software integration, and multidisciplinary documentation.</p>
-      <p>Open to engineering positions, technical roles, and internships with full readiness to relocate to <strong>across the European Union, and the Gulf region</strong>.</p>
-      <div class="lang-row">
-        <div class="lang-badge"><strong>Arabic</strong> — Native</div>
-        <div class="lang-badge"><strong>English</strong> — C1 Professional</div>
-        <div class="lang-badge"><strong>German</strong> — A1 Elementary</div>
-        <div class="lang-badge"><strong>Polish</strong> — A1 Elementary</div>
-      </div>
+<section id="about" class="alt">
+  <p class="eyebrow">About</p><h2>Engineering profile</h2>
+  <div class="about">
+    <div>
+      <p>I'm an <strong>Automatic Control and Robotics</strong> student in Poznań, Poland, graduating in April 2027. My work spans industrial automation, power distribution, embedded hardware, and robotics.</p>
+      <p>I've worked on <strong>PLC programming, motor drive testing, LV/MV switchgear, tendering, and PCB design</strong>. My engineering thesis is a modular hardware platform for autonomous mobile robots.</p>
+      <p>I'm looking for internships and entry-level roles in automation and robotics hardware, and I'm open to relocating across the EU and the Gulf.</p>
+      <div class="chips"><span class="chip">Arabic: native</span><span class="chip">English: C1</span><span class="chip">German: A1</span><span class="chip">Polish: A1</span></div>
     </div>
-    <div class="fade-up" style="transition-delay:0.15s">
-      <div class="stats-grid">
-        <div class="stat-box"><div class="stat-val">3</div><div class="stat-lbl">Field Internships</div></div>
-        <div class="stat-box"><div class="stat-val">10+</div><div class="stat-lbl">Projects Built</div></div>
-        <div class="stat-box"><div class="stat-val">Apr '27</div><div class="stat-lbl">Graduation</div></div>
-        <div class="stat-box"><div class="stat-val">C1</div><div class="stat-lbl">English Level</div></div>
-      </div>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.875rem">Core Soft Competencies</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem">
-        <div class="soft-card"><span class="soft-icon">🎯</span><span class="soft-label">Strategic Thinking</span></div>
-        <div class="soft-card"><span class="soft-icon">💡</span><span class="soft-label">Creative Thinking</span></div>
-        <div class="soft-card"><span class="soft-icon">🔍</span><span class="soft-label">Problem Solving</span></div>
-        <div class="soft-card"><span class="soft-icon">⚡</span><span class="soft-label">Teamwork &amp; Energy</span></div>
-        <div class="soft-card" style="grid-column: span 2"><span class="soft-icon">🔄</span><span class="soft-label">Communication &amp; Adaptability</span></div>
-      </div>
+    <div class="stats">
+      <div class="stat"><b class="grad">3</b><small>Internships</small></div>
+      <div class="stat"><b class="grad">8</b><small>Projects</small></div>
+      <div class="stat"><b class="grad">Apr '27</b><small>Graduation</small></div>
+      <div class="stat"><b class="grad">C1</b><small>English</small></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SKILLS ═══ -->
 <section id="skills">
-  <div class="fade-up">
-    <p class="sec-num">02 — Technical Skills</p>
-    <h2 class="sec-title">Core <span>Competencies</span></h2>
-    <div class="divider"></div>
-  </div>
-  <div class="skills-layout fade-up" id="skillsLayout">
+  <p class="eyebrow">Skills</p><h2>Core competencies</h2>
+  <div class="sk"><div><b>Industrial automation &amp; control</b><small>PLC / automation engineer</small></div><div class="chips"><span class="chip">Siemens TIA Portal</span><span class="chip">SCL / LAD / FBD</span><span class="chip">S7-1200</span><span class="chip">HMI</span><span class="chip">Profinet</span><span class="chip">PID tuning</span><span class="chip">PLCSIM</span></div></div>
+  <div class="sk"><div><b>Electronics &amp; embedded</b><small>Hardware / embedded engineer</small></div><div class="chips"><span class="chip">PCB design (KiCad)</span><span class="chip">STM32</span><span class="chip">ESP32</span><span class="chip">UART / I2C</span><span class="chip">SWD debugging</span><span class="chip">Soldering</span><span class="chip">Oscilloscope</span></div></div>
+  <div class="sk"><div><b>Motor drives &amp; power</b><small>Power electronics / FAT</small></div><div class="chips"><span class="chip">BLDC / PMSM control</span><span class="chip">HIL testing</span><span class="chip">Converters &amp; inverters</span><span class="chip">LV/MV switchgear</span><span class="chip">FAT</span></div></div>
+  <div class="sk"><div><b>Robotics &amp; vision</b><small>Robotics engineer</small></div><div class="chips"><span class="chip">ROS2 (simulation)</span><span class="chip">MoveIt2</span><span class="chip">Gazebo</span><span class="chip">MuJoCo</span><span class="chip">ABB RAPID</span><span class="chip">KUKA</span><span class="chip">Universal Robots</span><span class="chip">YOLOv8 / OpenCV</span></div></div>
+  <div class="sk"><div><b>Electrical design &amp; documentation</b><small>CAD / tendering</small></div><div class="chips"><span class="chip">AutoCAD</span><span class="chip">EPLAN</span><span class="chip">SolidWorks</span><span class="chip">P&amp;ID</span><span class="chip">Compliance sheets</span><span class="chip">Technical offers</span></div></div>
+  <div class="sk"><div><b>Programming &amp; tools</b><small>Software</small></div><div class="chips"><span class="chip">C / C++</span><span class="chip">Python</span><span class="chip">MATLAB / Simulink</span><span class="chip">Linux (Ubuntu)</span><span class="chip">Git / GitHub</span></div></div>
+</section>
 
-    <div class="skill-domain" style="--domain-color:linear-gradient(135deg,#6c63ff,#00d4ff)">
-      <div>
-        <div class="domain-icon-wrap" style="background:rgba(108,99,255,0.1);border-color:rgba(108,99,255,0.2)">🦾</div>
-        <div class="domain-name">Robotics &amp; Simulation</div>
-        <div class="domain-jobtitle">Robotics Engineer<br>Navigation &amp; Kinematics</div>
-      </div>
-      <div class="domain-tags">
-        <span class="dtag">ROS2</span><span class="dtag">Gazebo</span><span class="dtag">MoveIt</span><span class="dtag">Nav2</span><span class="dtag">Robot Kinematics</span><span class="dtag">Autonomous Navigation</span><span class="dtag">MuJoCo</span><span class="dtag">Linux (Ubuntu)</span>
-      </div>
-    </div>
-
-    <div class="skill-domain" style="--domain-color:linear-gradient(135deg,#ff8c00,#ff4500)">
-      <div>
-        <div class="domain-icon-wrap" style="background:rgba(255,140,0,0.1);border-color:rgba(255,140,0,0.2)">🔌</div>
-        <div class="domain-name">Industrial Automation &amp; Control</div>
-        <div class="domain-jobtitle">PLC / SCADA Engineer<br>Industrial Automation</div>
-      </div>
-      <div class="domain-tags">
-        <span class="dtag">Siemens TIA Portal</span><span class="dtag">LAD / FBD / SCL</span><span class="dtag">IEC 61131-3</span><span class="dtag">RTU Configuration</span><span class="dtag">HMI Integration</span><span class="dtag">SCADA Systems</span><span class="dtag">S7-PLCSIM</span>
-      </div>
-    </div>
-
-    <div class="skill-domain" style="--domain-color:linear-gradient(135deg,#00d4ff,#00ff88)">
-      <div>
-        <div class="domain-icon-wrap" style="background:rgba(0,212,255,0.1);border-color:rgba(0,212,255,0.2)">⚡</div>
-        <div class="domain-name">Electronics &amp; Embedded Systems</div>
-        <div class="domain-jobtitle">Embedded Firmware Engineer<br>Hardware Prototyping</div>
-      </div>
-      <div class="domain-tags">
-        <span class="dtag">Advanced PCB Design</span><span class="dtag">KiCad</span><span class="dtag">STM32 (CubeIDE)</span><span class="dtag">ESP32</span><span class="dtag">Circuit Prototyping</span><span class="dtag">Sensors &amp; Actuators</span><span class="dtag">SWD Debugging</span><span class="dtag">C / C++</span>
-      </div>
-    </div>
-
-    <div class="skill-domain" style="--domain-color:linear-gradient(135deg,#ffaa00,#ff6b6b)">
-      <div>
-        <div class="domain-icon-wrap" style="background:rgba(255,170,0,0.1);border-color:rgba(255,170,0,0.2)">📐</div>
-        <div class="domain-name">Electrical Design &amp; CAD</div>
-        <div class="domain-jobtitle">Electrical CAD Designer<br>Shop Drawings Engineer</div>
-      </div>
-      <div class="domain-tags">
-        <span class="dtag">AutoCAD Electrical</span><span class="dtag">P&amp;ID</span><span class="dtag">Single Line Diagrams (SLD)</span><span class="dtag">Power Schematics</span><span class="dtag">Shop Drawings</span><span class="dtag">EPLAN Basics</span><span class="dtag">SolidWorks</span>
-      </div>
-    </div>
-
-    <div class="skill-domain" style="--domain-color:linear-gradient(135deg,#ff6b6b,#ffaa00)">
-      <div>
-        <div class="domain-icon-wrap" style="background:rgba(255,107,107,0.1);border-color:rgba(255,107,107,0.2)">🏭</div>
-        <div class="domain-name">Power Distribution &amp; Systems</div>
-        <div class="domain-jobtitle">Power Systems Engineer<br>FAT / Commissioning</div>
-      </div>
-      <div class="domain-tags">
-        <span class="dtag">LV/MV Switchgear</span><span class="dtag">Distribution Panels (DB, MDB, EMDB)</span><span class="dtag">ATS Panels</span><span class="dtag">RMU Units</span><span class="dtag">Dielectric Insulation</span><span class="dtag">FAT &amp; SAT Workflows</span><span class="dtag">Protection Relays</span>
-      </div>
-    </div>
-
-    <div class="skill-domain" style="--domain-color:linear-gradient(135deg,#a0ff6b,#00d4ff)">
-      <div>
-        <div class="domain-icon-wrap" style="background:rgba(160,255,107,0.1);border-color:rgba(160,255,107,0.2)">📑</div>
-        <div class="domain-name">Tendering &amp; Technical Documentation</div>
-        <div class="domain-jobtitle">Proposals &amp; Tendering<br>Estimation Engineer</div>
-      </div>
-      <div class="domain-tags">
-        <span class="dtag">Technical Submittals</span><span class="dtag">Compliance Sheets</span><span class="dtag">Commercial Estimation</span><span class="dtag">Bill of Quantities (BOQ)</span><span class="dtag">Engineering Consultation</span>
-      </div>
-    </div>
-
-    <div class="skill-domain" style="--domain-color:linear-gradient(135deg,#ff6bcc,#6c63ff)">
-      <div>
-        <div class="domain-icon-wrap" style="background:rgba(255,107,204,0.1);border-color:rgba(255,107,204,0.2)">💻</div>
-        <div class="domain-name">Programming &amp; Core Tools</div>
-        <div class="domain-jobtitle">Software &amp; Systems Developer</div>
-      </div>
-      <div class="domain-tags">
-        <span class="dtag">Python</span><span class="dtag">C</span><span class="dtag">C++ (OOP/STL)</span><span class="dtag">MATLAB / Simulink</span><span class="dtag">Linux (Ubuntu)</span><span class="dtag">Git / GitHub</span><span class="dtag">SFML</span><span class="dtag">OpenCV / YOLO</span>
-      </div>
-    </div>
-
+<section id="experience" class="alt">
+  <p class="eyebrow">Experience</p><h2>Internships</h2>
+  <div class="tl">
+    <div class="job"><small>Aug 2026 – Sep 2026</small><div class="card"><h3>Automation Engineer Intern</h3><div class="co">Elsewedy Industries (EMAS) · Cairo, Egypt</div><ul>
+      <li>Prepared technical and commercial offers for PLC, RTU, kiosk substation, and RMU automation packages.</li>
+      <li>Reviewed P&amp;ID, electrical schematics, and shop drawings for LV/MV distribution panels.</li>
+      <li>Selected PLC and RTU architectures for tenders, evaluating I/O, network topology, and redundancy.</li>
+      <li>Wrote technical compliance sheets against client specifications; worked with project managers, power engineers, and sales.</li></ul></div></div>
+    <div class="job"><small>Jul 2026 – Aug 2026</small><div class="card"><h3>Electrical Power Engineering Intern</h3><div class="co">Memico · Cairo, Egypt</div><ul>
+      <li>Followed assembly and Factory Acceptance Testing (FAT) of LV/MV switchgear and distribution panels: dielectric, interlock, and protection relay checks.</li>
+      <li>Reviewed QC checklists and compliance sheets against manufacturing standards.</li>
+      <li>Read busbar layouts and wiring schematics in EPLAN, AutoCAD, and SolidWorks with the design department.</li></ul></div></div>
+    <div class="job"><small>Jun 2025 – Aug 2025</small><div class="card"><h3>Research Assistant Intern: Motor Drives &amp; Control</h3><div class="co">Poznań University of Technology · Poznań, Poland</div><ul>
+      <li>Ran fault-injection and hardware-in-the-loop tests on PMSM and BLDC drives using DSP-based hardware.</li>
+      <li>Controlled a BLDC motor on STM32 Nucleo (GPIO, timers, ADC) with SWD debugging.</li>
+      <li>Wrote MATLAB and Python scripts to extract and compare telemetry (3-phase voltages, currents, rotor speed) for fault analysis.</li></ul></div></div>
   </div>
 </section>
 
-<!-- ═══ JOURNEY / EXPERIENCE ═══ -->
-<section id="journey">
-  <div class="fade-up">
-    <p class="sec-num">03 — Experience</p>
-    <h2 class="sec-title">Professional <span>Journey</span></h2>
-    <div class="divider"></div>
-  </div>
-  <div class="journey-wrap fade-up">
-    <div class="tl-line"></div>
-    <div id="journeyTL">
-
-      <!-- EMAS (Elsewedy) -->
-      <div class="tl-item">
-        <div class="tl-left">
-          <div class="tl-date">Aug 2026 – Sep 2026</div>
-          <div class="tl-type">Internship</div>
-        </div>
-        <div class="tl-card">
-          <div class="tl-role">Automation Engineer Intern</div>
-          <div class="tl-company">Elsewedy Industries (EMAS) · Cairo, Egypt</div>
-          <ul class="tl-bullets">
-            <li>Prepared technical and commercial proposals for PLC, RTU, Kiosk Substations, and RMU automation packages.</li>
-            <li>Analyzed project engineering drawings, including P&amp;ID, electrical power schematics, and shop drawings for LV/MV distribution panels.</li>
-            <li>Configured and selected industrial PLC and RTU architectures, evaluating I/O requirements, network topologies, and system redundancy models.</li>
-            <li>Developed technical compliance sheets and estimation proposals in alignment with client specifications and engineering standards.</li>
-            <li>Interfaced with major engineering consulting firms in Egypt, collaborating closely with Project Managers, Power Engineering, and Tendering teams.</li>
-          </ul>
-          <div class="tl-tech"><span class="tl-badge">PLC</span><span class="tl-badge">RTU</span><span class="tl-badge">LV/MV Switchgear</span><span class="tl-badge">RMU</span><span class="tl-badge">P&amp;ID</span><span class="tl-badge">BOQ &amp; Tendering</span></div>
-        </div>
-      </div>
-
-      <!-- Memico -->
-      <div class="tl-item">
-        <div class="tl-left">
-          <div class="tl-date">Jul 2026 – Aug 2026</div>
-          <div class="tl-type">Internship</div>
-        </div>
-        <div class="tl-card">
-          <div class="tl-role">Electrical Power Engineering Intern</div>
-          <div class="tl-company">Memico · Cairo, Egypt</div>
-          <ul class="tl-bullets">
-            <li>Observed end-to-end manufacturing workflows and assembly for LV/MV switchgear and distribution panels (DB, MDB, EMDB).</li>
-            <li>Conducted Factory Acceptance Testing (FAT) workflows and studied site commissioning procedures (SAT), verifying dielectric insulation, safety interlocks, and protection relays.</li>
-            <li>Examined production engineering drawings, busbar layouts, and wiring schematics using EPLAN, AutoCAD, and SolidWorks in collaboration with the Design Department.</li>
-            <li>Worked alongside Quality Control (QC) teams to evaluate compliance sheets and inspection checklists against manufacturing standards.</li>
-          </ul>
-          <div class="tl-tech"><span class="tl-badge">Switchgear Assembly</span><span class="tl-badge">FAT/SAT</span><span class="tl-badge">Dielectric Insulation</span><span class="tl-badge">AutoCAD</span><span class="tl-badge">EPLAN</span><span class="tl-badge">SolidWorks</span></div>
-        </div>
-      </div>
-
-      <!-- PUT Internship -->
-      <div class="tl-item">
-        <div class="tl-left">
-          <div class="tl-date">Jun 2025 – Aug 2025</div>
-          <div class="tl-type">Research Internship</div>
-        </div>
-        <div class="tl-card">
-          <div class="tl-role">Research Assistant Intern — Motor Drives &amp; Control</div>
-          <div class="tl-company">Poznań University of Technology · Poznań, Poland</div>
-          <ul class="tl-bullets">
-            <li>Extracted multi-channel telemetry data (3-phase voltages, currents, rotor speed) directly from DSP memory buffers via dedicated IDE tools.</li>
-            <li>Built automated MATLAB scripts to process raw experimental data and generate comparative plots for signal integrity and fault analysis.</li>
-            <li>Investigated dynamic drive behavior and fault characteristics across BLDC and PMSM systems under simulated abnormal operating states.</li>
-            <li>Conducted embedded validations and SWD debugging on STM32 microcontrollers (Timers, ADC, GPIO).</li>
-          </ul>
-          <div class="tl-tech"><span class="tl-badge">DSP Hardware</span><span class="tl-badge">PMSM / BLDC</span><span class="tl-badge">MATLAB</span><span class="tl-badge">Python</span><span class="tl-badge">STM32</span><span class="tl-badge">Telemetry</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PROJECTS ═══ -->
 <section id="projects">
-  <div class="fade-up">
-    <p class="sec-num">04 — Projects</p>
-    <h2 class="sec-title">Featured <span>Engineering Work</span></h2>
-    <div class="divider"></div>
+  <p class="eyebrow">Projects</p><h2>Engineering work</h2>
+  <div class="flt" id="flt">
+    <button class="on" data-f="all">All</button><button data-f="hw">Hardware &amp; PCB</button><button data-f="plc">PLC &amp; automation</button><button data-f="rob">Robotics</button><button data-f="ai">Vision &amp; software</button>
   </div>
-  <div class="proj-filter fade-up">
-    <button class="pf-btn active" onclick="filterProjects('all',this)">All</button>
-    <button class="pf-btn" onclick="filterProjects('robotics',this)">Robotics &amp; ROS2</button>
-    <button class="pf-btn" onclick="filterProjects('plc',this)">PLC &amp; Automation</button>
-    <button class="pf-btn" onclick="filterProjects('embedded',this)">Embedded &amp; PCB</button>
-    <button class="pf-btn" onclick="filterProjects('software',this)">Software C++</button>
-    <button class="pf-btn" onclick="filterProjects('ai',this)">AI &amp; Vision</button>
-  </div>
-  <div class="projects-grid fade-up" id="projectsGrid">
-
-    <div class="proj-card" id="pc-1" data-cat="robotics ai">
-      <div class="proj-img-area">
-        <div class="proj-upload-ph" onclick="triggerProjImg('pc-1')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Image</span></div>
-        <div class="proj-type-badge">Robotics · ROS2 / MoveIt</div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-title">ROS2 Manipulation — UR10 &amp; PSYONIC Hand</div>
-        <div class="proj-desc">Advanced simulation of robotic arm manipulation with a UR10 arm and PSYONIC Ability Hand in MuJoCo/Isaac Sim. Implemented kinematic solvers, trajectory planning, and grasping logic using ROS2 and MoveIt2.</div>
-        <div class="proj-footer">
-          <div class="proj-tags"><span class="proj-tag">ROS2</span><span class="proj-tag">MoveIt2</span><span class="proj-tag">MuJoCo</span><span class="proj-tag">Python</span></div>
-          <a class="proj-link" href="https://github.com/abdosalama11" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj-card" id="pc-2" data-cat="embedded">
-      <div class="proj-img-area">
-        <div class="proj-upload-ph" onclick="triggerProjImg('pc-2')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Image</span></div>
-        <div class="proj-type-badge">Embedded · PCB Design</div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-title">Line Follower Robot — Custom KiCad PCB</div>
-        <div class="proj-desc">Designed a 2-layer hardware control board in KiCad integrating an STM32 MCU, IR sensor conditioning, and H-bridge motor drivers. Programmed closed-loop PID path-following firmware in C.</div>
-        <div class="proj-footer">
-          <div class="proj-tags"><span class="proj-tag">KiCad PCB</span><span class="proj-tag">STM32</span><span class="proj-tag">Embedded C</span><span class="proj-tag">PID</span></div>
-          <a class="proj-link" href="https://github.com/abdosalama11" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj-card" id="pc-4" data-cat="plc">
-      <div class="proj-img-area">
-        <div class="proj-upload-ph" onclick="triggerProjImg('pc-4')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Image</span></div>
-        <div class="proj-type-badge">PLC · TIA Portal</div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-title">Automated Material Sorting System</div>
-        <div class="proj-desc">Industrial sorting cell programmed in TIA Portal (Ladder Logic) using optical and inductive sensors. Structured fail-safe state machines, hardware E-Stop interlocks, and sensor debouncing.</div>
-        <div class="proj-footer">
-          <div class="proj-tags"><span class="proj-tag">TIA Portal</span><span class="proj-tag">LAD</span><span class="proj-tag">Sensors</span><span class="proj-tag">Safety FSM</span></div>
-          <a class="proj-link" href="#"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj-card" id="pc-5" data-cat="plc">
-      <div class="proj-img-area">
-        <div class="proj-upload-ph" onclick="triggerProjImg('pc-5')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Image</span></div>
-        <div class="proj-type-badge">PLC · Process Control</div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-title">Industrial Pressure &amp; Level Control</div>
-        <div class="proj-desc">Analog closed-loop process controller in SCL/LAD with NORM_X/SCALE_X calibration for 4–20 mA transducers. Integrated alarm limits, hysteresis thresholds, and automatic shut-off logic.</div>
-        <div class="proj-footer">
-          <div class="proj-tags"><span class="proj-tag">Analog I/O</span><span class="proj-tag">S7-1200</span><span class="proj-tag">SCL</span><span class="proj-tag">Process Safety</span></div>
-          <a class="proj-link" href="#"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj-card" id="pc-3" data-cat="software">
-      <div class="proj-img-area">
-        <div class="proj-upload-ph" onclick="triggerProjImg('pc-3')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Image</span></div>
-        <div class="proj-type-badge">Software · C++ Engine</div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-title">2D Platformer Engine — C++ / SFML</div>
-        <div class="proj-desc">Modular platformer engine with physics, AABB bounding collision detection, and sprite handling. Employs clean Object-Oriented Design, smart pointers, RAII memory patterns, and custom STL containers.</div>
-        <div class="proj-footer">
-          <div class="proj-tags"><span class="proj-tag">C++17</span><span class="proj-tag">SFML</span><span class="proj-tag">OOP / RAII</span><span class="proj-tag">Physics</span></div>
-          <a class="proj-link" href="https://github.com/abdosalama11/SuperMario.git" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj-card" id="pc-0" data-cat="ai">
-      <div class="proj-img-area">
-        <div class="proj-upload-ph" onclick="triggerProjImg('pc-0')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Image</span></div>
-        <div class="proj-type-badge">AI · Computer Vision</div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-title">Mineral &amp; Rock Detection — YOLOv8</div>
-        <div class="proj-desc">End-to-end computer vision model for identifying and segmenting mineral samples. Trained YOLO pipelines with dataset augmentation, boundary classification, and live camera feed inference.</div>
-        <div class="proj-footer">
-          <div class="proj-tags"><span class="proj-tag">YOLOv8</span><span class="proj-tag">OpenCV</span><span class="proj-tag">Python</span><span class="proj-tag">Inference</span></div>
-          <a class="proj-link" href="https://github.com/abdosalama11" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-
+  <div class="grid" id="grid">
+    <div class="pc feat" data-c="hw rob"><div class="ph"><span>Engineering thesis · in progress</span></div><div class="pb"><h3>Modular Hardware Architecture for Autonomous Mobile Robots</h3><p>Multi-board electronics platform for mobile robots: a power distribution board with dual-source switching, reverse-polarity and overcurrent protection, and 24 V / 5 V / 3.3 V rails, plus BLDC drive units with closed-loop control and current, voltage, and thermal telemetry. Validation planned through load, thermal, and drive-cycle tests.</p><div class="chips"><span class="chip">PCB design</span><span class="chip">Power electronics</span><span class="chip">BLDC</span><span class="chip">Telemetry</span></div></div></div>
+    <div class="pc" data-c="plc"><div class="ph"><span>PLC · TIA Portal</span></div><div class="pb"><h3>Siemens S7-1200 Automation Stations</h3><p>Sorting belt with inductive and optical sensors, multi-floor elevator in SCL/LAD with 200 ms input debounce, and a sewage pump station with KTP600 HMI over Profinet. PID_Compact loops with anti-windup and 0–10 V analog scaling.</p><div class="chips"><span class="chip">SCL / LAD</span><span class="chip">HMI</span><span class="chip">PID</span><span class="chip">Profinet</span></div></div></div>
+    <div class="pc" data-c="hw"><div class="ph"><span>Embedded · PCB</span></div><div class="pb"><h3>Autonomous Line Follower Robot</h3><p>Designed the schematic and PCB layout in KiCad, assembled the prototype, and verified electrical continuity and stability.</p><div class="chips"><span class="chip">KiCad</span><span class="chip">Soldering</span><span class="chip">Sensors</span><span class="chip">Motor drivers</span></div><a class="soc" style="align-self:flex-start;margin-top:.3rem" href="https://github.com/abdosalama11/Line-Follower-Car.git" target="_blank" rel="noopener">Repository</a></div></div>
+    <div class="pc" data-c="ai rob"><div class="ph"><span>Control · vision</span></div><div class="pb"><h3>Vision-Based Drone Control (DJI Tello)</h3><p>Closed-loop proportional controller guiding a DJI Tello from YOLOv8 detections. Distance is estimated from bounding-box area calibrated in field tests, and video processing (30 ms) and flight commands (100 ms) run in separate Python threads.</p><div class="chips"><span class="chip">Python</span><span class="chip">YOLOv8</span><span class="chip">OpenCV</span><span class="chip">Multithreading</span></div></div></div>
+    <div class="pc" data-c="rob"><div class="ph"><span>Robot cells · simulation</span></div><div class="pb"><h3>ABB, KUKA &amp; UR Robot Simulation</h3><p>ABB RobotStudio cell with RAPID pick-and-place, conveyor tracking, WorkObjects, TCP calibration, and collision checking. UR sequence programs and KUKA state-machine tasks.</p><div class="chips"><span class="chip">RobotStudio</span><span class="chip">RAPID</span><span class="chip">KUKA KRL</span><span class="chip">UR Sim</span></div></div></div>
+    <div class="pc" data-c="rob"><div class="ph"><span>Robotics · ROS2 · in progress</span></div><div class="pb"><h3>ROS2 Manipulation: UR10 &amp; PSYONIC Ability Hand</h3><p>Simulation of a UR10 arm with a PSYONIC Ability Hand in MuJoCo and Isaac Sim, using ROS2 and MoveIt2 for motion planning and trajectory generation.</p><div class="chips"><span class="chip">ROS2</span><span class="chip">MoveIt2</span><span class="chip">MuJoCo</span><span class="chip">Python</span></div></div></div>
+    <div class="pc" data-c="ai"><div class="ph"><span>Computer vision · team project · in progress</span></div><div class="pb"><h3>Mineral &amp; Rock Detection</h3><p>Real-time rock classification in a university-supervised team. Training YOLOv8 models and building OpenCV inference pipelines with field datasets prepared alongside civil engineering partners.</p><div class="chips"><span class="chip">YOLOv8</span><span class="chip">OpenCV</span><span class="chip">Python</span></div></div></div>
+    <div class="pc" data-c="ai"><div class="ph"><span>Software · C++</span></div><div class="pb"><h3>2D Platformer Engine (C++ / SFML)</h3><p>Modular platformer engine using OOP, smart pointers and RAII, custom containers, sprite handling, and collision checks.</p><div class="chips"><span class="chip">C++</span><span class="chip">SFML</span><span class="chip">OOP</span></div><a class="soc" style="align-self:flex-start;margin-top:.3rem" href="https://github.com/abdosalama11/SuperMario.git" target="_blank" rel="noopener">Repository</a></div></div>
   </div>
 </section>
 
-<!-- ═══ CERTIFICATIONS & QUALIFICATIONS ═══ -->
-<section id="certs" style="background:var(--bg1)">
-  <div class="fade-up">
-    <p class="sec-num">05 — Qualifications &amp; Education</p>
-    <h2 class="sec-title">Education &amp; <span>Certifications</span></h2>
-    <div class="divider"></div>
-  </div>
-  <div class="cert-grid fade-up">
-    
-    <div class="cert-card">
-      <div>
-        <div class="cert-title">B.Eng · Automatic Control &amp; Robotics</div>
-        <div class="cert-issuer">Poznań University of Technology (Politechnika Poznańska)</div>
-        <div class="cert-date">Oct 2023 – Apr 2027 (Expected) · Poznań, Poland</div>
-      </div>
-      <span class="cert-status status-prep">Undergraduate Program</span>
-    </div>
-
-    <div class="cert-card">
-      <div>
-        <div class="cert-title">Computer Engineering Studies</div>
-        <div class="cert-issuer">Arab Academy for Science, Technology &amp; Maritime Transport</div>
-        <div class="cert-date">Feb 2023 – Sep 2023 · Egypt</div>
-      </div>
-      <span class="cert-status status-done">Completed Foundation</span>
-    </div>
-
-    <div class="cert-card">
-      <div>
-        <div class="cert-title">SEP Qualifications (Group G1 - Cat E &amp; D)</div>
-        <div class="cert-issuer">Association of Polish Electrical Engineers (SEP)</div>
-        <div class="cert-date">Electrical Operation, Maintenance &amp; Testing for LV/MV Systems</div>
-      </div>
-      <span class="cert-status status-sched">In Progress / Scheduled</span>
-    </div>
-
-    <div class="cert-card">
-      <div>
-        <div class="cert-title">MV Frequency Converters &amp; Inverters</div>
-        <div class="cert-issuer">Drive Topologies, Commissioning &amp; Testing Procedures</div>
-        <div class="cert-date">Advanced Power Drives &amp; Converter Testing</div>
-      </div>
-      <span class="cert-status status-sched">Planned</span>
-    </div>
-
-    <div class="cert-card">
-      <div>
-        <div class="cert-title">Industrial Electrical Measurements &amp; FAT</div>
-        <div class="cert-issuer">Dielectric Insulation, Measurement Tools &amp; QA Protocols</div>
-        <div class="cert-date">High-Voltage / Quality Acceptance Standards</div>
-      </div>
-      <span class="cert-status status-prep">In Preparation</span>
-    </div>
-
-    <div class="cert-card">
-      <div>
-        <div class="cert-title">Robotics Telemetry &amp; Protocols</div>
-        <div class="cert-issuer">MAVLink (PyMAVLink/MAVSDK), Serial UART, UDP/TCP</div>
-        <div class="cert-date">Autonomous Communications &amp; Data Streaming</div>
-      </div>
-      <span class="cert-status status-prep">Self-Study &amp; Integration</span>
-    </div>
-
-    <div class="cert-card">
-      <div>
-        <div class="cert-title">Category B Driving License</div>
-        <div class="cert-issuer">Motor Vehicle Licensing</div>
-        <div class="cert-date">EU Standard Driving License</div>
-      </div>
-      <span class="cert-status status-sched">In Progress</span>
-    </div>
-
-    <div class="cert-card">
-      <div>
-        <div class="cert-title">American Diploma (ACT I/II — EST I/II)</div>
-        <div class="cert-issuer">Qaitbay Private Language School · Egypt</div>
-        <div class="cert-date">Oct 2019 – Jun 2022 · Mathematics, Science &amp; English</div>
-      </div>
-      <span class="cert-status status-done">Certified</span>
-    </div>
-
+<section id="education" class="alt">
+  <p class="eyebrow">Education</p><h2>Education</h2>
+  <div class="ed">
+    <div class="card"><h3>B.Eng · Automatic Control &amp; Robotics</h3><div class="co">Poznań University of Technology</div><small>Oct 2023 – Apr 2027 (expected) · Poznań, Poland</small></div>
+    <div class="card"><h3>Computer Engineering (first year)</h3><div class="co">Arab Academy for Science, Technology &amp; Maritime Transport</div><small>Feb 2023 – Sep 2023 · Egypt</small></div>
+    <div class="card"><h3>American Diploma (ACT I/II, EST I/II)</h3><div class="co">Qaitbay Private Language School</div><small>Oct 2019 – Jun 2022 · Egypt</small></div>
   </div>
 </section>
 
-<!-- ═══ CONTACT ═══ -->
 <section id="contact">
-  <div class="fade-up">
-    <p class="sec-num">06 — Contact</p>
-    <h2 class="sec-title">Get In <span>Touch</span></h2>
-    <div class="divider"></div>
-  </div>
-  <div class="contact-outer fade-up">
-    <div class="contact-info">
-      <h3>Open to Engineering Roles &amp; Relocation</h3>
-      <p>Available for internships, working student roles, and engineering collaborations across <strong>Poland (Poznań), the EU, and the Gulf region</strong>. Specializing in robotics, control systems, and power automation.</p>
-
-      <a class="contact-item" href="mailto:abdo.tayel103@gmail.com">
-        <div class="ci-icon" style="background:rgba(108,99,255,0.12);color:var(--primary2);font-size:1.2rem">✉</div>
-        <div><div class="ci-label">Email</div><div class="ci-value">abdo.tayel103@gmail.com</div></div>
-      </a>
-      <a class="contact-item" href="tel:+48577175940">
-        <div class="ci-icon" style="background:rgba(0,212,255,0.12);color:var(--secondary);font-size:1.2rem">📱</div>
-        <div><div class="ci-label">Phone / WhatsApp</div><div class="ci-value">(+48) 577 175 940</div></div>
-      </a>
-      <a class="contact-item" href="https://www.linkedin.com/in/abdelrahman-tayel-7558a3249" target="_blank">
-        <div class="ci-icon" style="background:rgba(0,119,181,0.12);color:#0077b5;font-weight:800;font-family:'JetBrains Mono',monospace;font-size:0.8rem">in</div>
-        <div><div class="ci-label">LinkedIn</div><div class="ci-value">linkedin.com/in/abdelrahman-tayel-7558a3249</div></div>
-      </a>
-      <a class="contact-item" href="https://github.com/abdosalama11" target="_blank">
-        <div class="ci-icon" style="background:rgba(0,255,136,0.08);color:var(--green);font-family:'JetBrains Mono',monospace;font-size:0.78rem;font-weight:700">GH</div>
-        <div><div class="ci-label">GitHub</div><div class="ci-value">github.com/abdosalama11</div></div>
-      </a>
-      <div class="contact-item" style="cursor:default">
-        <div class="ci-icon" style="background:rgba(255,107,107,0.1);color:var(--accent);font-size:1.1rem">📍</div>
-        <div><div class="ci-label">Location</div><div class="ci-value">Poznań, Poland · Open to relocation ( EU / Gulf)</div></div>
-      </div>
+  <p class="eyebrow">Contact</p><h2>Get in touch</h2>
+  <div class="contact">
+    <div>
+      <p style="color:var(--t2);font-weight:300;margin-bottom:1.2rem">Open to internships and entry-level engineering roles in automation and robotics hardware, in Poland, the EU. Graduating April 2027.</p>
+      <a class="ci" href="mailto:abdo.tayel103@gmail.com"><small>Email</small>abdo.tayel103@gmail.com</a>
+      <a class="ci" href="tel:+48577175940"><small>Phone / WhatsApp</small>(+48) 577 175 940</a>
+      <a class="ci" href="https://www.linkedin.com/in/abdelrahman-tayel-7558a3249" target="_blank" rel="noopener"><small>LinkedIn</small>linkedin.com/in/abdelrahman-tayel-7558a3249</a>
+      <a class="ci" href="https://github.com/abdosalama11" target="_blank" rel="noopener"><small>GitHub</small>github.com/abdosalama11</a>
+      <span class="ci"><small>Location</small>Poznań, Poland · open to relocation (EU)</span>
     </div>
-
-    <div class="contact-right">
-      <div>
-        <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem">Direct Communication</div>
-        <div style="font-size:0.85rem;color:var(--text2);font-weight:300;line-height:1.7;margin-bottom:1.25rem">Feel free to connect via phone, email, or LinkedIn. I am always open to discussing new technical projects and opportunities.</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:0.75rem">
-        <button class="contact-copy-btn" onclick="copyText('abdo.tayel103@gmail.com','Email copied!')">
-          <span>✉</span> Copy Email Address
-        </button>
-        <button class="contact-copy-btn" onclick="copyText('+48577175940','Phone copied!')">
-          <span>📱</span> Copy Phone Number
-        </button>
-        <button class="contact-copy-btn" onclick="window.open('https://www.linkedin.com/in/abdelrahman-tayel-7558a3249','_blank')">
-          <span>in</span> Open LinkedIn Profile
-        </button>
-        <button class="contact-copy-btn" onclick="window.open('https://github.com/abdosalama11','_blank')">
-          <span>⌥</span> Open GitHub Profile
-        </button>
-      </div>
-      <div class="avail-box">
-        <div class="avail-label">Current Status</div>
-        <div class="avail-text">Open to technical internships, engineering roles, and site commissioning opportunities. Graduating in <strong>April 2027</strong>.</div>
-      </div>
+    <div class="cb">
+      <button onclick="cp('abdo.tayel103@gmail.com','Email copied')">Copy email</button>
+      <button onclick="cp('+48577175940','Phone copied')">Copy phone number</button>
+      <a class="btn" style="text-align:center" href="Abdelrahman_Tayel_CV.pdf" target="_blank" rel="noopener">Download CV</a>
     </div>
   </div>
 </section>
 
-<footer>
-  <span>© 2026 <b>Abdelrahman Tayel</b> · Automatic Control &amp; Robotics Engineer</span>
-  <span>Poznań University of Technology</span>
-</footer>
-
-<div class="toast" id="toast"></div>
+<footer><span>© 2026 Abdelrahman Tayel</span><span>Poznań University of Technology</span></footer>
+<div class="toast" id="toast" role="status"></div>
 
 <script>
-// CURSOR
-const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function anim(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim)})();
-document.querySelectorAll('a,button,.proj-card,.skill-domain,.tl-card,.cert-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px'});
-  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px'});
-});
-
-// NAV SCROLL
-window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>50));
-
-// SCROLL FADE
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.1});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-
-// UNI PROGRESS
 (function(){
-  const start=new Date('2023-10-01'),end=new Date('2027-04-01'),now=new Date();
-  const pct=Math.min(100,Math.max(0,Math.round(((now-start)/(end-start))*100)));
-  setTimeout(()=>{document.getElementById('uniBar').style.width=pct+'%';},300);
-  document.getElementById('uniPct').textContent=pct+'%';
-  document.getElementById('uniNow').textContent=now.toLocaleString('en',{month:'short'})+' '+now.getFullYear();
+  var s=new Date('2023-10-01'),e=new Date('2027-04-01'),n=new Date();
+  var p=Math.min(100,Math.max(0,Math.round((n-s)/(e-s)*100)));
+  document.getElementById('pct').textContent=p+'%';
+  setTimeout(function(){document.getElementById('fill').style.width=p+'%'},300);
 })();
-
-// TOAST
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
-
-// COPY
-function copyText(txt,msg){
-  navigator.clipboard.writeText(txt).then(()=>showToast(msg)).catch(()=>{
-    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);
-    ta.select();document.execCommand('copy');ta.remove();showToast(msg);
+function cp(t,m){
+  var x=document.getElementById('toast');
+  function ok(){x.textContent=m;x.classList.add('show');setTimeout(function(){x.classList.remove('show')},2200)}
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok)}else{ok()}
+}
+document.getElementById('flt').addEventListener('click',function(ev){
+  var b=ev.target.closest('button');if(!b)return;
+  document.querySelectorAll('#flt button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+  document.querySelectorAll('#grid .pc').forEach(function(c){
+    c.style.display=(b.dataset.f==='all'||c.dataset.c.split(' ').indexOf(b.dataset.f)>-1)?'flex':'none';
   });
-}
-
-// PROJECT IMAGE UPLOADER
-function triggerProjImg(id){
-  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
-  inp.onchange=e=>{
-    const f=e.target.files[0];if(!f)return;
-    const r=new FileReader();r.onload=ev=>{
-      const card=document.getElementById(id);const area=card.querySelector('.proj-img-area');
-      let img=area.querySelector('img.proj-img');
-      if(!img){img=document.createElement('img');img.className='proj-img';area.appendChild(img);}
-      img.src=ev.target.result;const ph=area.querySelector('.proj-upload-ph');if(ph)ph.style.display='none';showToast('Project image set!');
-    };r.readAsDataURL(f);
-  };inp.click();
-}
-
-// FILTER
-function filterProjects(cat,btn){
-  document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-  document.querySelectorAll('#projectsGrid .proj-card[data-cat]').forEach(c=>{
-    c.style.display=(cat==='all'||(c.dataset.cat||'').split(' ').includes(cat))?'flex':'none';
-  });
-}
+});
 </script>
 </body>
 </html>
